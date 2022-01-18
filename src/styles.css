@@ -12,6 +12,9 @@ button {
 em {
   font-size: 25px;
 }
+img {
+  margin: 0 auto;
+}
 .container-box {
   max-width: 900px;
   margin: 30px auto 10px;
@@ -24,9 +27,14 @@ em {
   border-radius: 20px;
   max-width: 900px;
 }
-p {
+ul {
+  padding: 20px 0;
+}
+li {
+  list-style: none;
   color: #006ec5;
   margin: 0;
+  padding: 0;
 }
 a {
   text-decoration: none;
@@ -36,6 +44,10 @@ a {
   position: relative;
   top: -38px;
   font-size: 15px;
+}
+.float-left {
+  position: relative;
+  top: -20px;
 }
 #temperature {
   color: black;
