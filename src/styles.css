@@ -68,6 +68,7 @@ a {
 .active {
   color: rgb(33, 33, 33);
   cursor: default;
+  font-size: 25px;
 }
 
 .active:hover {
