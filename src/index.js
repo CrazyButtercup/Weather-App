@@ -23,6 +23,29 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-sm-2">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${day}</h5>
+                  <p class="card-text min-temperature">-7° / <span class="max-temperature"> -7° </span> </p>
+                  <img class="forecast-image" src="https://openweathermap.org/img/wn/04d@2x.png" alt="" />
+                  <p>Sunny</p>
+                </div>
+              </div>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
@@ -109,3 +132,5 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Skopje");
+
+displayForecast();
