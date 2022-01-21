@@ -23,6 +23,12 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "1394188b8b5a17b1b8eace0b77c04df0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -93,6 +99,8 @@ function displayWeatherCondition(response) {
   celsiusTemperature = response.data.main.temp;
 }
 
+getForecast(response.data.coord);
+
 function searchCity(city) {
   let apiKey = "1394188b8b5a17b1b8eace0b77c04df0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -132,5 +140,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Skopje");
-
-displayForecast();
