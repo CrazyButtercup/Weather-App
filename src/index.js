@@ -52,7 +52,7 @@ function displayForecast(response) {
                   <img class="forecast-image" src="https://openweathermap.org/img/wn/${
                     forecastDay.weather[0].icon
                   }@2x.png" alt="" />
-                  <p>Sunny</p>
+                  <p>${forecastDay.weather[0].main}</p>
                 </div>
               </div>
             </div>`;
@@ -97,7 +97,7 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
+    response.data.wind.speed * 3.6
   );
   document.querySelector("#feels-like").innerHTML = Math.round(
     response.data.main.feels_like
