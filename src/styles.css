@@ -71,13 +71,13 @@ a {
   font-size: 25px;
 }
 
-.active:hover {
-  text-decoration: none;
-  color: rgb(33, 33, 33);
-}
 .forecast-image {
   max-width: 45px;
 }
 .weather-forecast {
   text-align: center;
+}
+
+#min {
+  opacity: 0.5;
 }

@@ -44,9 +44,9 @@ function displayForecast(response) {
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">${formatDay(forecastDay.dt)}</h5>
-                  <p class="card-text min-temperature">${Math.round(
+                  <p> <span class="card-text min-temperature" id="min">${Math.round(
                     forecastDay.temp.min
-                  )}° / <span class="max-temperature"> ${Math.round(
+                  )}° </span>/ <span class="max-temperature"> ${Math.round(
           forecastDay.temp.max
         )}° </span> </p>
                   <img class="forecast-image" src="https://openweathermap.org/img/wn/${
@@ -67,23 +67,6 @@ function getForecast(coordinates) {
   let apiKey = "1394188b8b5a17b1b8eace0b77c04df0";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
-}
-
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 let dateElement = document.querySelector("#date");
@@ -146,13 +129,5 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
-
-let celsiusTemperature = null;
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", convertToFahrenheit);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
 
 searchCity("Skopje");
